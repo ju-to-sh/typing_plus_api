@@ -5,12 +5,13 @@ ARG RUBY_VERSION=3.3.1
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
-WORKDIR /rails
+# WORLDIRを/apiに修正
+WORKDIR /api
 
 # Set production environment
 ENV RAILS_ENV="development" \
     BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" 
+    BUNDLE_PATH="/usr/local/bundle"
     # BUNDLE_WITHOUT="development"
 
 
@@ -44,15 +45,17 @@ RUN apt-get update -qq && \
 
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
-COPY --from=build /rails /rails
+# COPY --from=build /rails /railsを以下のように修正
+COPY --from=build /api /api
 
 # Run and own only the runtime files as a non-root user for security
-RUN useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
-USER rails:rails
+# RUN useradd rails --create-home --shell /bin/bash && \
+#     chown -R rails:rails db log storage tmp
+# USER rails:rails
 
 # Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+# ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+ENTRYPOINT ["/api/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
