@@ -80,7 +80,7 @@ GEM
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.2.4)
-    concurrent-ruby (1.2.3)
+    concurrent-ruby (1.3.1)
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
@@ -110,7 +110,6 @@ GEM
     minitest (5.23.1)
     msgpack (1.7.2)
     mutex_m (0.2.0)
-    mysql2 (0.5.6)
     net-imap (0.4.11)
       date
       net-protocol
@@ -123,14 +122,15 @@ GEM
     nio4r (2.7.3)
     nokogiri (1.16.5-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.5-x86_64-linux)
-      racc (~> 1.4)
+    pg (1.5.6)
     psych (5.1.2)
       stringio
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.8.0)
     rack (3.0.11)
+    rack-cors (2.0.2)
+      rack (>= 2.0.0)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -170,7 +170,7 @@ GEM
     rake (13.2.1)
     rdoc (6.7.0)
       psych (>= 4.0.0)
-    reline (0.5.7)
+    reline (0.5.8)
       io-console (~> 0.5)
     stringio (3.1.0)
     thor (1.3.1)
@@ -185,13 +185,13 @@ GEM
 
 PLATFORMS
   aarch64-linux
-  x86_64-linux
 
 DEPENDENCIES
   bootsnap
   debug
-  mysql2 (~> 0.5)
+  pg (~> 1.1)
   puma (>= 5.0)
+  rack-cors
   rails (~> 7.1.3, >= 7.1.3.3)
   tzinfo-data
 
