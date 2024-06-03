@@ -7,5 +7,6 @@ ENV LANG=C.UTF-8 \
 RUN apt-get update -qq && apt-get install -y nodejs yarn
 RUN mkdir /api
 WORKDIR /api
-COPY Gemfile Gemfile.lock /api/
+COPY Gemfile Gemfile.lock ./
+COPY . .
 RUN bundle install

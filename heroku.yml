@@ -7,7 +7,7 @@ setup:
     RAILS_LOG_TO_STDOUT: enabled
 build:
   docker:
-    web: Dockerfile
+    web: Dockerfile.prod
 run:
-  web: bundle exec puma -C config/
+  web: bundle exec puma -C config/puma.rb
 
