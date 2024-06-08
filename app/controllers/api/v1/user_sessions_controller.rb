@@ -3,27 +3,22 @@ module Api
     class UserSessionsController  < ApplicationController
 
       def create
-        @user = login(params[:email], params[:password])
-
-        if @user
-          render json: @user
+        user = login(params[:email], params[:password])
+        if user
+          json_string = UserSerializer.new(user).serializable_hash.to_json
+          render json: json_string
         else
-          render "hello", status: :unprocessable_entity
+          render json: { message: "Invalid email or password" }, status: :unprocessable_entity
         end
       end
 
       def destroy
         logout
-        # redirect_to(:users, notice: 'Logged out!')
+        render json: { message: "Logout!" }
       end
 
       private
 
-      # def user_params
-      #   params.requre(:user).permit(:email, :password)
-      # end
-      # https://github.com/NoamB/sorcery/issues/724
-      # https://qiita.com/okaeri_ryoma/items/0d01469f2265e5d51af1
       def form_authenticity_token; end
     end
   end
