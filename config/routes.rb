@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
+  namespace :api, format: 'json' do
+    namespace :v1 do
+      resources :users, only: %i[index]
+      get 'login' => 'user_sessions#new', :as => :login
+      post 'login' => "user_sessions#create"
+      post 'logout' => 'user_sessions#destroy', :as => :logout
+      resource :registration, only: %i[create]
+    end
+  end
 end
