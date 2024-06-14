@@ -20,7 +20,7 @@ module Api
       private
 
       def user_params
-        params.except(:format).permit(:nickname, :email, :password)
+        params.require(:user).permit(:nickname, :email, :password)
       end
     end
   end
