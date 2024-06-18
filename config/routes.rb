@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api, format: 'json' do
     namespace :v1 do
-      resources :users, only: %i[index]
+      resource :user, only: %i[show update]
       get 'login' => 'user_sessions#new', :as => :login
       post 'login' => "user_sessions#create"
       post 'logout' => 'user_sessions#destroy', :as => :logout
