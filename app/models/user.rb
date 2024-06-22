@@ -5,6 +5,8 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true
 
+  mount_uploader :avatar, AvatarUploader
+
   def activate_api_key!
     return api_keys.active.first if api_keys.active.exists?
 
