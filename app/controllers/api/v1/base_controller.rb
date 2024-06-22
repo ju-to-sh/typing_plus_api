@@ -23,6 +23,11 @@ module Api
         response.headers['AccessToken'] = api_key.access_token
       end
 
+      def delete_access_token!(user)
+        api_key = current_user.api_keys.active.first
+        api_key.delete
+      end
+
       private
 
       def form_authenticity_token; end
