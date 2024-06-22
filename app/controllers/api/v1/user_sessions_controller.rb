@@ -1,7 +1,7 @@
 module Api
   module V1
     class UserSessionsController  < BaseController
-      skip_before_action :authenticate
+      skip_before_action :authenticate, only: %i[create]
 
       def create
         @user = login(params[:email], params[:password])
@@ -14,7 +14,7 @@ module Api
 
       def destroy
         logout
-        render json: { message: "Logout!" }
+        delete_access_token!(current_user)
       end
 
       private
