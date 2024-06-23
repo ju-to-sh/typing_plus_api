@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_10_231712) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_23_031711) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_10_231712) do
     t.datetime "updated_at", null: false
     t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true
     t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
+
+  create_table "quiz_choices", force: :cascade do |t|
+    t.string "content"
+    t.boolean "is_correct"
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_quiz_choices_on_quiz_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,4 +51,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_10_231712) do
   end
 
   add_foreign_key "api_keys", "users"
+  add_foreign_key "quiz_choices", "quizzes"
 end
