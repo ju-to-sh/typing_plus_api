@@ -1,5 +1,5 @@
 class GameList < ApplicationRecord
-  has_many :quiz, dependent: :destroy
+  has_many :quizzes, dependent: :destroy
 
   with_options presence: true do
     validates :title

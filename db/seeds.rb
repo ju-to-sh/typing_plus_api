@@ -4,9 +4,14 @@ require_relative './data/data'
   FactoryBot.create(:user)
 end
 
+# ゲームリスト作成
+game_lists.each do |list|
+  FactoryBot.create(:game_list, list)
+end
+
 # クイズ問題作成
 questions.each do |question|
-  FactoryBot.create(:quiz, content: question)
+  FactoryBot.create(:quiz, question)
 end
 
 # クイズ問題の選択肢作成
