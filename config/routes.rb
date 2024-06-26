@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post 'login' => "user_sessions#create"
       post 'logout' => 'user_sessions#destroy', :as => :logout
       resource :registration, only: %i[create]
+      resources :game_lists, only: %i[index]
     end
   end
 end

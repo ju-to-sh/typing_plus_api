@@ -1,35 +1,44 @@
-# クイズデータ
-def questions
-  questions = [
-    'Active Recordについて正しい記述となるように(  )内に入る適切な言葉を選びなさい。\nActive Recordとは、(  )に相当するものであり、ビジネスデータとビジネスロジックを表すシステムの階層である。',
-    'O/Rマッピングの主な目的について最も適切なものを選びなさい。',
-    'ActiveRecordのコールバックで、レコードが保存される前に実行されるコールバックを選びなさい',
-    'ActiveRecordのアソシエーションで、has_manyの関連付けを持つモデルが子レコードを削除する際に、子レコードも一緒に削除されるようにするためのオプションを選びなさい',
-    'ActiveRecordで、一意性を検証するためのバリデーションを選びなさい',
-    'RailsのRESTfulルーティングにおいて、editアクションに対応するHTTPメソッドを選びなさい',
-    'Railsのコントローラにおいて、before_actionフィルターを使用して特定のアクションの前に実行されるメソッドを指定する際、アクションをスキップするために使用するメソッドを選びなさい',
-    'Railsのresourcesルーティングで、特定のリソースのネストされたリソースを定義する際の正しい記述を選びなさい',
-    'Railsのストロングパラメータを使用して、userパラメータのうちnameとemailのみを許可するための正しい記述を選びなさい',
-    'Railsのコントローラで、特定のアクションでのみ適用されるbefore_actionフィルターを設定するための正しい記述を選びなさい',
-    'Rubyで条件分岐を一行で書く場合の正しい構文を選びなさい',
-    'Rubyのcase文で、全ての条件が偽である場合に実行される節を選びなさい',
-    'Rubyでunless文を使うときに注意すべきことを選びなさい',
-    'Rubyの三項演算子を使用する正しい方法を選びなさい',
-    'Rubyのcase文でwhen節を範囲オブジェクトで使用する場合、次のうち正しい構文を選びなさい',
-    'Rubyで配列の要素をシャッフルするためのメソッドを選びなさい',
-    'Rubyで配列の中から重複した要素を取り除くメソッドを選びなさい',
-    'Rubyで配列の全ての要素が特定の条件を満たすかどうかを調べるメソッドを選びなさい',
-    '次のコードの出力結果を選びなさい
-    arr = [10, 20, 30, 40, 50]
-    result = arr.each_slice(2).map(&:reverse).flatten
-    puts result',
-    '次のコードの出力結果を選びなさい
-    arr = [[1, 2], [3, 4], [5, 6]]
-    result = arr.transpose
-    puts result.inspect'
+# ゲームリストデータ
+def game_lists
+  game_lists = [
+    {title: 'Active Record', content: 'Active Recordnに関する問題', game_type: 0, level: 1, category: 1},
+    {title: 'CRUD処理', content: 'CRUD処理に関する問題', game_type: 0, level: 1, category: 1},
+    {title: 'Ruby 条件分岐', content: 'Rubyの条件分岐に関する問題', game_type: 0, level: 1, category: 0},
+    {title: 'Ruby 配列', content: 'Rubyの配列に関する問題', game_type: 0, level: 1, category: 0},
   ]
 end
 
+# クイズデータ
+def questions
+  questions = [
+    {game_list_id: 1, content: 'Active Recordについて正しい記述となるように(  )内に入る適切な言葉を選びなさい。\nActive Recordとは、(  )に相当するものであり、ビジネスデータとビジネスロジックを表すシステムの階層である。'},
+    {game_list_id: 1, content:'O/Rマッピングの主な目的について最も適切なものを選びなさい。'},
+    {game_list_id: 1, content: 'ActiveRecordのコールバックで、レコードが保存される前に実行されるコールバックを選びなさい'},
+    {game_list_id: 1, content: 'ActiveRecordのアソシエーションで、has_manyの関連付けを持つモデルが子レコードを削除する際に、子レコードも一緒に削除されるようにするためのオプションを選びなさい'},
+    {game_list_id: 1, content: 'ActiveRecordで、一意性を検証するためのバリデーションを選びなさい'},
+    {game_list_id: 2, content: 'RailsのRESTfulルーティングにおいて、editアクションに対応するHTTPメソッドを選びなさい'},
+    {game_list_id: 2, content: 'Railsのコントローラにおいて、before_actionフィルターを使用して特定のアクションの前に実行されるメソッドを指定する際、アクションをスキップするために使用するメソッドを選びなさい'},
+    {game_list_id: 2, content: 'Railsのresourcesルーティングで、特定のリソースのネストされたリソースを定義する際の正しい記述を選びなさい'},
+    {game_list_id: 2, content: 'Railsのストロングパラメータを使用して、userパラメータのうちnameとemailのみを許可するための正しい記述を選びなさい'},
+    {game_list_id: 2, content: 'Railsのコントローラで、特定のアクションでのみ適用されるbefore_actionフィルターを設定するための正しい記述を選びなさい'},
+    {game_list_id: 3, content: 'Rubyで条件分岐を一行で書く場合の正しい構文を選びなさい'},
+    {game_list_id: 3, content: 'Rubyのcase文で、全ての条件が偽である場合に実行される節を選びなさい'},
+    {game_list_id: 3, content: 'Rubyでunless文を使うときに注意すべきことを選びなさい'},
+    {game_list_id: 3, content: 'Rubyの三項演算子を使用する正しい方法を選びなさい'},
+    {game_list_id: 3, content: 'Rubyのcase文でwhen節を範囲オブジェクトで使用する場合、次のうち正しい構文を選びなさい'},
+    {game_list_id: 4, content: 'Rubyで配列の要素をシャッフルするためのメソッドを選びなさい'},
+    {game_list_id: 4, content: 'Rubyで配列の中から重複した要素を取り除くメソッドを選びなさい'},
+    {game_list_id: 4, content: 'Rubyで配列の全ての要素が特定の条件を満たすかどうかを調べるメソッドを選びなさい'},
+    {game_list_id: 4, content: '次のコードの出力結果を選びなさい
+      arr = [10, 20, 30, 40, 50]
+      result = arr.each_slice(2).map(&:reverse).flatten
+      puts result'},
+    {game_list_id: 4, content: '次のコードの出力結果を選びなさい
+      arr = [[1, 2], [3, 4], [5, 6]]
+      result = arr.transpose
+      puts result.inspect'},
+  ]
+end
 
 # クイズ選択肢データ
 def question_choices
