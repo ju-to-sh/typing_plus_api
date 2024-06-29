@@ -1,8 +1,8 @@
 # ゲームリストデータ
 def game_lists
   game_lists = [
-    {title: 'Active Record', content: 'Active Recordnに関する問題', game_type: 0, level: 1, category: 1},
-    {title: 'CRUD処理', content: 'CRUD処理に関する問題', game_type: 0, level: 1, category: 1},
+    {title: 'Active Record', content: 'Active Recordに関する問題', game_type: 0, level: 3, category: 1},
+    {title: 'CRUD処理', content: 'CRUD処理に関する問題', game_type: 0, level: 2, category: 1},
     {title: 'Ruby 条件分岐', content: 'Rubyの条件分岐に関する問題', game_type: 0, level: 1, category: 0},
     {title: 'Ruby 配列', content: 'Rubyの配列に関する問題', game_type: 0, level: 1, category: 0},
   ]
@@ -11,7 +11,7 @@ end
 # クイズデータ
 def questions
   questions = [
-    {game_list_id: 1, content: 'Active Recordについて正しい記述となるように(  )内に入る適切な言葉を選びなさい。\nActive Recordとは、(  )に相当するものであり、ビジネスデータとビジネスロジックを表すシステムの階層である。'},
+    {game_list_id: 1, content: "Active Recordについて正しい記述となるように(  )内に入る適切な言葉を選びなさい。\nActive Recordとは、(  )に相当するものであり、ビジネスデータとビジネスロジックを表すシステムの階層である。"},
     {game_list_id: 1, content:'O/Rマッピングの主な目的について最も適切なものを選びなさい。'},
     {game_list_id: 1, content: 'ActiveRecordのコールバックで、レコードが保存される前に実行されるコールバックを選びなさい'},
     {game_list_id: 1, content: 'ActiveRecordのアソシエーションで、has_manyの関連付けを持つモデルが子レコードを削除する際に、子レコードも一緒に削除されるようにするためのオプションを選びなさい'},
@@ -29,14 +29,14 @@ def questions
     {game_list_id: 4, content: 'Rubyで配列の要素をシャッフルするためのメソッドを選びなさい'},
     {game_list_id: 4, content: 'Rubyで配列の中から重複した要素を取り除くメソッドを選びなさい'},
     {game_list_id: 4, content: 'Rubyで配列の全ての要素が特定の条件を満たすかどうかを調べるメソッドを選びなさい'},
-    {game_list_id: 4, content: '次のコードの出力結果を選びなさい
-      arr = [10, 20, 30, 40, 50]
-      result = arr.each_slice(2).map(&:reverse).flatten
-      puts result'},
-    {game_list_id: 4, content: '次のコードの出力結果を選びなさい
-      arr = [[1, 2], [3, 4], [5, 6]]
-      result = arr.transpose
-      puts result.inspect'},
+    {game_list_id: 4, content: "次のコードの出力結果を選びなさい\n
+      arr = [10, 20, 30, 40, 50]\n
+      result = arr.each_slice(2).map(&:reverse).flatten\n
+      puts result"},
+    {game_list_id: 4, content: "次のコードの出力結果を選びなさい\n
+      arr = [[1, 2], [3, 4], [5, 6]]\n
+      result = arr.transpose\n
+      puts result.inspect"},
   ]
 end
 
