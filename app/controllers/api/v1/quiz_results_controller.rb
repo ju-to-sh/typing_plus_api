@@ -1,10 +1,22 @@
 module Api
   module V1
     class QuizResultsController  < BaseController
-      skip_before_action :authenticate, only: %i[create]
+      skip_before_action :authenticate, only: %i[index create]
+
+      def index
+        if access_token_present?
+          authenticate
+          quiz_results = QuizResult.where(user_id: current_user).last(5)
+
+          render json: quiz_results
+        else
+          render json: []
+        end
+      end
 
       def create
-        if current_user
+        if access_token_present?
+          authenticate
           user = current_user
           quiz_results = quiz_results_params
           quiz_results.each do |param|
@@ -16,14 +28,13 @@ module Api
           session[:quiz_results] ||= []
           session[:quiz_results] << quiz_results_params
 
-          render json: { message: "Quiz results saved successfully" }, status: :created
+          render json: session[:quiz_results]
         end
       end
 
       private
 
       def quiz_results_params
-        # params.require(:quiz_result).permit(:quiz_id, :select_answer)
         params.require(:quiz_result).map do |result|
           result.permit(:quiz_id, :select_answer)
         end
