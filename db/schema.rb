@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_25_015630) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_29_022547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_015630) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "quiz_answers", force: :cascade do |t|
+    t.bigint "quiz_choice_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_choice_id"], name: "index_quiz_answers_on_quiz_choice_id"
+    t.index ["user_id"], name: "index_quiz_answers_on_user_id"
+  end
+
   create_table "quiz_choices", force: :cascade do |t|
     t.string "content"
     t.boolean "is_correct"
@@ -41,6 +50,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_015630) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quiz_id"], name: "index_quiz_choices_on_quiz_id"
+  end
+
+  create_table "quiz_results", force: :cascade do |t|
+    t.integer "select_answer", null: false
+    t.bigint "quiz_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_quiz_results_on_quiz_id"
+    t.index ["user_id"], name: "index_quiz_results_on_user_id"
   end
 
   create_table "quizzes", force: :cascade do |t|
@@ -63,6 +82,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_015630) do
   end
 
   add_foreign_key "api_keys", "users"
+  add_foreign_key "quiz_answers", "quiz_choices"
+  add_foreign_key "quiz_answers", "users"
   add_foreign_key "quiz_choices", "quizzes"
+  add_foreign_key "quiz_results", "quizzes"
+  add_foreign_key "quiz_results", "users"
   add_foreign_key "quizzes", "game_lists"
 end

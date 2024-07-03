@@ -28,6 +28,10 @@ module Api
         api_key.delete
       end
 
+      def access_token_present?
+        request.headers['Authorization'].present?
+      end
+
       private
 
       def form_authenticity_token; end
