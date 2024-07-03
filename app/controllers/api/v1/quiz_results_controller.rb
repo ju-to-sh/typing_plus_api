@@ -1,13 +1,12 @@
 module Api
   module V1
     class QuizResultsController  < BaseController
-      skip_before_action :authenticate, only: %i[index create]
+      skip_before_action :authenticate, only: %i[show create]
 
-      def index
+      def show
         if access_token_present?
           authenticate
           quiz_results = QuizResult.where(user_id: current_user).last(5)
-
           render json: quiz_results
         else
           render json: []
