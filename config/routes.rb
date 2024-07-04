@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resource :registration, only: %i[create]
       resources :game_lists, only: %i[index show]
       resources :quizzes, only: %i[show]
+      resources :typing_games, only: %i[show]
       resources :quiz_results, only: %i[show create]
     end
   end
