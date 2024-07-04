@@ -1,0 +1,2 @@
+class TypingGame < ApplicationRecord
+end
