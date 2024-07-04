@@ -5,6 +5,8 @@ def game_lists
     {title: 'CRUD処理', content: 'CRUD処理に関する問題', game_type: 0, level: 2, category: 1},
     {title: 'Ruby 条件分岐', content: 'Rubyの条件分岐に関する問題', game_type: 0, level: 1, category: 0},
     {title: 'Ruby 配列', content: 'Rubyの配列に関する問題', game_type: 0, level: 1, category: 0},
+    {title: 'Ruby基本構文', content: 'Rubyでよく使用する基本構文に関するタイピング問題', game_type: 1, level: 2, category: 0},
+    {title: 'Rails基本構文', content: 'Railsでよく使用する基本構文に関するタイピング問題', game_type: 1, level: 3, category: 1},
   ]
 end
 
@@ -126,3 +128,18 @@ def question_choices
   ]
 end
 
+# タイピング問題データ
+def typing_questions
+  typing_questions = [
+    {game_list_id: 5, content: "fruits = ['apple', 'banana', 'cherry']\nfruits << 'date'"},
+    {game_list_id: 5, content: "person = {name: 'Alice', age: 30, city: 'New York'\n}puts person[:name]"},
+    {game_list_id: 5, content: "def greet(name)\n\"Hello, \#{name}!\"\nend\nputs greet('Bob')"},
+    {game_list_id: 5, content: "numbers = [1, 2, 3, 4, 5]\nnumbers.each do |number|\nputs number * 2\nend"},
+    {game_list_id: 5, content: "class Dog\ndef initialize(name)\n@name = name\nend\ndef bark\n\"\#{@name} says woof!\"\nend\nend\n\ndog = Dog.new('Rex')\nputs dog.bark"},
+    {game_list_id: 6, content: "class ApplicationController < ActionController::Base\nprotect_from_forgery with: :exception\nend"},
+    {game_list_id: 6, content: "def create\n@article = Article.new(article_params)\n\nif @article.save\nredirect_to @article\nelse\nrender 'new'\nend\nend"},
+    {game_list_id: 6, content: "resources :articles do\nresources :comments\nend"},
+    {game_list_id: 6, content: "class Article < ApplicationRecord\nhas_many :comments, dependent: :destroy\nvalidates :title, presence: true,length: { minimum: 5 }\nend"},
+    {game_list_id: 6, content: "age = 18\nif age >= 18\nputs 'You are an adult.'\nelse\nputs 'You are a minor.'\nend"},
+  ]
+end
