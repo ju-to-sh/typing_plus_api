@@ -133,9 +133,9 @@ def typing_questions
   typing_questions = [
     {game_list_id: 5, content: "fruits = ['apple', 'banana', 'cherry']\nfruits << 'date'"},
     {game_list_id: 5, content: "person = {name: 'Alice', age: 30, city: 'New York'\n}puts person[:name]"},
-    {game_list_id: 5, content: "def greet(name)\n\"Hello, #{name}!\"\nend\nputs greet('Bob')"},
+    {game_list_id: 5, content: "def greet(name)\n\"Hello, \#{name}!\"\nend\nputs greet('Bob')"},
     {game_list_id: 5, content: "numbers = [1, 2, 3, 4, 5]\nnumbers.each do |number|\nputs number * 2\nend"},
-    {game_list_id: 5, content: "class Dog\ndef initialize(name)\n@name = name\nend\ndef bark\n\"#{@name} says woof!\"\nend\nend\n\ndog = Dog.new('Rex')\nputs dog.bark"},
+    {game_list_id: 5, content: "class Dog\ndef initialize(name)\n@name = name\nend\ndef bark\n\"\#{@name} says woof!\"\nend\nend\n\ndog = Dog.new('Rex')\nputs dog.bark"},
     {game_list_id: 6, content: "class ApplicationController < ActionController::Base\nprotect_from_forgery with: :exception\nend"},
     {game_list_id: 6, content: "def create\n@article = Article.new(article_params)\n\nif @article.save\nredirect_to @article\nelse\nrender 'new'\nend\nend"},
     {game_list_id: 6, content: "resources :articles do\nresources :comments\nend"},

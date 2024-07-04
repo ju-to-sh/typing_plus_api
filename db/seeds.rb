@@ -18,3 +18,8 @@ end
 question_choices.each do |choice|
   FactoryBot.create(:quiz_choice, choice)
 end
+
+# タイピング問題作成
+typing_questions.each do |typing|
+  FactoryBot.create(:typing_game, typing)
+end

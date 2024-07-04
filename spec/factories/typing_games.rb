@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :typing_game do
-    content { "MyString" }
+    game_list
   end
 end
