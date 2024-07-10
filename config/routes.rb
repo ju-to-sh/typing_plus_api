@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :quizzes, only: %i[show]
       resources :typing_games, only: %i[show]
       resources :quiz_results, only: %i[show create]
+      resources :typing_game_results, only: %i[create]
     end
   end
 end
