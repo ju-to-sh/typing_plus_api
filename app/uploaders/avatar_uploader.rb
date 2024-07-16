@@ -1,8 +1,13 @@
 class AvatarUploader < CarrierWave::Uploader::Base
-  storage :file
-
+  storage :fog
+  
+  include CarrierWave::MiniMagick
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    if model.present?
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    else
+      'uploads/content_image/'
+    end
   end
 
   def extension_allowlist
