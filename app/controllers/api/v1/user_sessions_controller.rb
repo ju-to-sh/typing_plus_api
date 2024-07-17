@@ -14,7 +14,7 @@ module Api
 
       def destroy
         logout
-        delete_access_token!(current_user)
+        delete_access_token!
       end
 
       private
