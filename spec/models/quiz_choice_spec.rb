@@ -7,8 +7,8 @@ RSpec.describe QuizChoice, type: :model do
 
     it '設定した全てのバリデーションが機能しているか' do
       quiz_choice = quiz.quiz_choices.new(content: '問題1の選択肢', is_correct: false)
-      expect(quiz).to be_valid
-      expect(quiz.errors).to be_empty
+      expect(quiz_choice).to be_valid
+      expect(quiz_choice.errors).to be_empty
     end
 
     it 'contentがない場合にバリデーションが機能してinvalidになるか' do
