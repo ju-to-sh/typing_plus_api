@@ -7,6 +7,9 @@ describe 'RegistrationAPI' do
 
       expect { post api_v1_registration_path, params: { user: user_params } }.to change(User, :count).by(+1)
       expect(response.status).to eq(200)
+
+      user = User.find_by(nickname: 'user')
+      expect(ApiKey.exists?(user_id: user.id)).to be_truthy
     end
   end
 
