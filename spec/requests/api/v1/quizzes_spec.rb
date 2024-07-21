@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'QuizAPI' do
+RSpec.describe 'QuizAPI', type: :request do
   let(:game_list) { create(:game_list) }
 
   it '特定のquizを取得する' do

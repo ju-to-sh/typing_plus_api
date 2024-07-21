@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'RegistrationAPI' do
+RSpec.describe 'RegistrationAPI', type: :request do
   context '新規ユーザー登録に成功する場合' do
     it '新規ユーザー作成に成功' do
       user_params = { nickname: 'user', email: 'user@example.com', password: 'password', password_confirmation: 'password' }

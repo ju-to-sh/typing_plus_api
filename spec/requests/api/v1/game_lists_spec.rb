@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'GameListAPI' do
+RSpec.describe 'GameListAPI', type: :request do
   it '特定のgame_listを取得する' do
     game_list = create(:game_list, title: 'Rspec')
 
