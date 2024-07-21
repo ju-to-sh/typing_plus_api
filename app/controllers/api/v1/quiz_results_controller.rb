@@ -6,7 +6,8 @@ module Api
       def show
         if access_token_present?
           authenticate
-          quiz_results = QuizResult.where(user_id: current_user).last(5)
+          user = current_user
+          quiz_results = QuizResult.where(user_id: user.id).last(5)
           render json: quiz_results
         else
           render json: []

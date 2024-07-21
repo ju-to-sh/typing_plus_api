@@ -1,8 +1,10 @@
 require 'rails_helper'
 require 'support/login_macros'
+require 'support/convert_value_macros'
 
 RSpec.describe 'TypingGameResultAPI', type: :request do
   include LoginMacros
+  include ConvertValueMacros
 
   let!(:game_list) { create(:game_list, game_type: 1) }
   let(:valid_attributes) { { typing_game_result: { type_speed: 200, miss_type: 5, score: 197, game_list_id: game_list.id } } }
@@ -31,16 +33,6 @@ RSpec.describe 'TypingGameResultAPI', type: :request do
 
       expect(response).to have_http_status(:ok)
       expect(convert_session_info).to include(valid_attributes[:typing_game_result].stringify_keys)
-    end
-  end
-
-  def convert_values_to_integers(hash)
-    hash.transform_values do |value|
-      if value.is_a?(String) && value.match?(/\A\d+\z/)
-        value.to_i
-      else
-        value
-      end
     end
   end
 end

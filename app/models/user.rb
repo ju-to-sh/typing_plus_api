@@ -2,6 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :api_keys
   has_many :typing_game_results
+  has_many :quiz_results
 
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true
