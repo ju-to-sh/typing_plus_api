@@ -1,6 +1,6 @@
 # ゲームリストデータ
 def game_lists
-  game_lists = [
+  [
     {title: 'Active Record', content: 'Active Recordに関する問題', game_type: 0, level: 3, category: 1},
     {title: 'CRUD処理', content: 'CRUD処理に関する問題', game_type: 0, level: 2, category: 1},
     {title: 'Ruby 条件分岐', content: 'Rubyの条件分岐に関する問題', game_type: 0, level: 1, category: 0},
@@ -13,7 +13,7 @@ end
 
 # クイズデータ
 def questions
-  questions = [
+  [
     {game_list_id: 1, content: "Active Recordについて正しい記述となるように(  )内に入る適切な言葉を選びなさい。\nActive Recordとは、(  )に相当するものであり、ビジネスデータとビジネスロジックを表すシステムの階層である。"},
     {game_list_id: 1, content:'O/Rマッピングの主な目的について最も適切なものを選びなさい。'},
     {game_list_id: 1, content: 'ActiveRecordのコールバックで、レコードが保存される前に実行されるコールバックを選びなさい'},
@@ -45,7 +45,7 @@ end
 
 # クイズ選択肢データ
 def question_choices
-  question_choices = [
+  [
     {quiz_id: 1, content: 'モデル', is_correct: true},
     {quiz_id: 1, content: 'コントローラ', is_correct: false},
     {quiz_id: 1, content: 'ビュー', is_correct: false},
@@ -131,7 +131,7 @@ end
 
 # タイピング問題データ
 def typing_questions
-  typing_questions = [
+  [
     {game_list_id: 5, content: "fruits = ['apple', 'banana', 'cherry']\nfruits << 'date'"},
     {game_list_id: 5, content: "person = {name: 'Alice', age: 30, city: 'New York'}\nputs person[:name]"},
     {game_list_id: 5, content: "def greet(name)\n\t\"Hello, \#{name}!\"\nend\nputs greet('Bob')"},

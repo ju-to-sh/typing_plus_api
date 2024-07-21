@@ -54,6 +54,8 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'rspec-rails'
   gem 'pry-rails'
+  gem 'rubocop', require:false
+  gem 'rubocop-rails', require:false
 end
 
 group :development do

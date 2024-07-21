@@ -1,6 +1,6 @@
 require_relative './data/data'
 # ユーザー作成
-10.times do |n|
+10.times do
   FactoryBot.create(:user)
 end
 
