@@ -4,9 +4,18 @@ module Api
       skip_before_action :authenticate, only: %i[index]
 
       def index
-        ranking_list = TypingGameResult.includes(:user).all
-        json_string = TypingGameResultSerializer.new(ranking_list).serializable_hash.to_json
+        score_list = TypingGameResult.unique_by_highest_score
+        ranking_list = score_list.sort_by { |result| -result.score }
+        json_string = TypingGameResultSerializer.new(ranking_list, options).serializable_hash.to_json
         render json: json_string
+      end
+
+      private
+
+      def options
+        options = {}
+        options[:include] = [:user]
+        options
       end
     end
   end
