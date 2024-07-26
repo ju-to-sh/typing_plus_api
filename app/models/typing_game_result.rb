@@ -9,4 +9,8 @@ class TypingGameResult < ApplicationRecord
     validates :game_list_id
     validates :user_id
   end
+
+  scope :unique_by_highest_score, -> {
+    select('DISTINCT ON (user_id) *').order(:user_id, score: :desc)
+  }
 end

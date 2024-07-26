@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :typing_games, only: %i[show]
       resources :quiz_results, only: %i[show create]
       resources :typing_game_results, only: %i[create]
+      get 'ranking' => 'ranking_lists#index'
     end
   end
 end
