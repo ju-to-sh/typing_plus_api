@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post 'logout' => 'user_sessions#destroy', :as => :logout
       resource :registration, only: %i[create]
       resources :game_lists, only: %i[show]
+      get 'search' => 'game_lists#index'
       get 'quizzes' => 'game_lists#quiz_lists'
       get 'typing_games' => 'game_lists#typing_lists'
       resources :quizzes, only: %i[show]
