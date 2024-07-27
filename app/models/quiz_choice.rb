@@ -1,6 +1,6 @@
 class QuizChoice < ApplicationRecord
   belongs_to :quiz
-  has_many :quiz_answers
+  has_many :quiz_answers, dependent: :destroy
   with_options presence: true do
     validates :quiz_id
     validates :content
