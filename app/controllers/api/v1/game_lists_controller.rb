@@ -1,7 +1,14 @@
 module Api
   module V1
     class GameListsController  < BaseController
-      skip_before_action :authenticate, only: %i[show quiz_lists typing_lists]
+      skip_before_action :authenticate, only: %i[index show quiz_lists typing_lists]
+
+      def index
+        q = GameList.ransack(search_params)
+        game_list = q.result(distinct: true)
+        json_string = GameListSerializer.new(game_list).serializable_hash.to_json
+        render json: json_string
+      end
 
       def show
         game_list = GameList.find_by(id: params[:id])
@@ -19,6 +26,12 @@ module Api
         game_lists = GameList.where(game_type: 1).order(game_type: :asc, title: :asc)
         json_string = GameListSerializer.new(game_lists).serializable_hash.to_json
         render json: json_string
+      end
+
+      private
+
+      def search_params
+        params.require(:q).permit(:title_cont, :category_eq, :level_eq)
       end
     end
   end
