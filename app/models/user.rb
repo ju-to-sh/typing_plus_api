@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :typing_game_results, dependent: :destroy
   has_many :quiz_results, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :game_lists, through: :likes
 
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true

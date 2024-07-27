@@ -17,6 +17,13 @@ module Api
         end
       end
 
+      def like
+        user = current_user
+        like_lists = user.game_lists
+        json_string = GameListSerializer.new(like_lists).serializable_hash.to_json
+        render json: json_string
+      end
+
       private
 
       def user_params

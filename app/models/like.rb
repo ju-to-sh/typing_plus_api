@@ -6,4 +6,5 @@ class Like < ApplicationRecord
     validates :user_id
     validates :game_list_id
   end
+  validates :user_id, uniqueness: { scope: :game_list_id }
 end
