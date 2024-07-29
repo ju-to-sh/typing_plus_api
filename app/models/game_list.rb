@@ -2,6 +2,7 @@ class GameList < ApplicationRecord
   has_many :quizzes, dependent: :destroy
   has_many :typing_games, dependent: :destroy
   has_many :typing_game_results, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   with_options presence: true do
     validates :title

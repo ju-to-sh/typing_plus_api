@@ -28,6 +28,12 @@ module Api
         render json: json_string
       end
 
+      def likes
+        like_lists = current_user.like_game_lists.order(created_at: :desc)
+        json_string = GameListSerializer.new(like_lists).serializable_hash.to_json
+        render json: json_string
+      end
+
       private
 
       def search_params

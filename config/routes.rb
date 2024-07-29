@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post 'logout' => 'user_sessions#destroy', :as => :logout
       resource :registration, only: %i[create]
       resources :game_lists, only: %i[show]
+      get 'likes' => 'game_lists#likes'
       get 'search' => 'game_lists#index'
       get 'quizzes' => 'game_lists#quiz_lists'
       get 'typing_games' => 'game_lists#typing_lists'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
       resources :typing_games, only: %i[show]
       resources :quiz_results, only: %i[show create]
       resources :typing_game_results, only: %i[create]
+      resources :likes, only: %i[create destroy]
       get 'ranking' => 'ranking_lists#index'
     end
   end
