@@ -1,7 +1,7 @@
 module Api
   module V1
     class GameListsController  < BaseController
-      skip_before_action :authenticate, only: %i[index show quiz_lists typing_lists]
+      skip_before_action :authenticate
 
       def index
         q = GameList.ransack(search_params)
@@ -29,9 +29,13 @@ module Api
       end
 
       def likes
-        like_lists = current_user.like_game_lists.order(created_at: :desc)
-        json_string = GameListSerializer.new(like_lists).serializable_hash.to_json
-        render json: json_string
+        if current_user
+          like_lists = current_user.like_game_lists.order(created_at: :desc)
+          json_string = GameListSerializer.new(like_lists).serializable_hash.to_json
+          render json: json_string
+        else
+          render json: []
+        end
       end
 
       private
