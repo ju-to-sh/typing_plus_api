@@ -23,7 +23,7 @@ module Api::ExceptionHandler
 
   def render_error(code, message, *error_messages)
     response = {
-      message: message,
+      message:,
       errors: error_messages.compact
     }
 

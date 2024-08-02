@@ -7,7 +7,9 @@ RSpec.describe 'TypingGameResultAPI', type: :request do
   include ConvertValueMacros
 
   let!(:game_list) { create(:game_list, game_type: 1) }
-  let(:valid_attributes) { { typing_game_result: { type_speed: 200, miss_type: 5, score: 197, game_list_id: game_list.id } } }
+  let(:valid_attributes) do
+    { typing_game_result: { type_speed: 200, miss_type: 5, score: 197, game_list_id: game_list.id } }
+  end
   let!(:user) { create(:user) }
   let(:access_token) { ApiKey.find_by(user_id: user.id).access_token }
   let(:headers) { { 'Authorization' => "Bearer #{access_token}" } }
@@ -18,7 +20,7 @@ RSpec.describe 'TypingGameResultAPI', type: :request do
     end
 
     it 'タイピング問題の結果を登録する' do
-      post api_v1_typing_game_results_path, params: valid_attributes, headers: headers
+      post(api_v1_typing_game_results_path, params: valid_attributes, headers:)
 
       json = JSON.parse(response.body)
       expect(response).to have_http_status(:created)

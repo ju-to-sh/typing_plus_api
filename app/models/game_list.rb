@@ -15,7 +15,7 @@ class GameList < ApplicationRecord
   enum game_type: { quiz: 0, typing: 1 }
   enum category: { ruby: 0, rails: 1 }
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["title", "category", "level"]
-end
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[title category level]
+  end
 end

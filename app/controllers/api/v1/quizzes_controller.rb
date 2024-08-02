@@ -1,6 +1,6 @@
 module Api
   module V1
-    class QuizzesController  < BaseController
+    class QuizzesController < BaseController
       skip_before_action :authenticate, only: %i[show]
 
       def show

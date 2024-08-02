@@ -22,14 +22,14 @@ RSpec.describe User, type: :model do
 
     it 'emailが被った場合にuniqueのバリデーションが機能してinvalidになるか' do
       user = create(:user, email: 'test1@example.com')
-      another_user = build(:user, email: 'test1@example.com' )
+      another_user = build(:user, email: 'test1@example.com')
       expect(another_user.save).to eq(false)
       expect(another_user.errors.messages[:email]).to eq(['has already been taken'])
     end
 
     it 'emailが被らない場合にバリデーションエラーが起きないか' do
       user = build(:user, email: 'test1@example.com')
-      another_user = build(:user, email: 'test2@example.com' )
+      another_user = build(:user, email: 'test2@example.com')
       expect(another_user).to be_valid
       expect(another_user.errors.messages[:email]).to be_empty
     end

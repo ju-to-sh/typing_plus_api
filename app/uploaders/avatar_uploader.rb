@@ -1,6 +1,6 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   storage :fog
-  
+
   include CarrierWave::MiniMagick
   def store_dir
     if model.present?
@@ -11,6 +11,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w(jpg jpeg png)
+    %w[jpg jpeg png]
   end
 end

@@ -1,6 +1,6 @@
 module Api
   module V1
-    class UserSessionsController  < BaseController
+    class UserSessionsController < BaseController
       skip_before_action :authenticate, only: %i[create]
 
       def create

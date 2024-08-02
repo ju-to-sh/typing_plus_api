@@ -6,7 +6,7 @@ class CreateApiKeys < ActiveRecord::Migration[7.1]
       t.datetime :expires_at
 
       t.timestamps
-      t.index ["access_token"], unique: true
+      t.index ['access_token'], unique: true
     end
   end
 end

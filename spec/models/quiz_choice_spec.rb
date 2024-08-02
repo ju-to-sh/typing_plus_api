@@ -20,7 +20,7 @@ RSpec.describe QuizChoice, type: :model do
     it 'is_correctがtrueもしくはfalse場合にバリデーションが機能してinvalidになるか' do
       quiz_choice = quiz.quiz_choices.new(content: '問題1の選択肢', is_correct: nil)
       expect(quiz_choice).to be_invalid
-      expect(quiz_choice.errors.messages[:is_correct]).to eq(["is not included in the list"])
+      expect(quiz_choice.errors.messages[:is_correct]).to eq(['is not included in the list'])
     end
   end
 end

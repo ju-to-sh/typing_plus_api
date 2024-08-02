@@ -1,6 +1,6 @@
 module Api
   module V1
-    class TypingGameResultsController  < BaseController
+    class TypingGameResultsController < BaseController
       skip_before_action :authenticate, only: %i[create]
 
       def create
@@ -11,7 +11,7 @@ module Api
           typing_result.user_id = user.id
 
           if typing_result.save
-            render json: { message: "typing results saved successfully" }, status: :created
+            render json: { message: 'typing results saved successfully' }, status: :created
           else
             render render_400(nil, typing_result.errors.full_messages)
           end
