@@ -1,6 +1,6 @@
 module Api
   module V1
-    class QuizResultsController  < BaseController
+    class QuizResultsController < BaseController
       skip_before_action :authenticate, only: %i[show create]
 
       def show
@@ -23,7 +23,7 @@ module Api
             QuizResult.create(user_id: user.id, quiz_id: param[:quiz_id], select_answer: param[:select_answer])
           end
 
-          render json: { message: "Quiz results saved successfully" }, status: :created
+          render json: { message: 'Quiz results saved successfully' }, status: :created
         else
           session[:quiz_results] ||= []
           session[:quiz_results] << quiz_results_params

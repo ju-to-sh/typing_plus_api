@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: %i[show update]
       get 'login' => 'user_sessions#new', :as => :login
-      post 'login' => "user_sessions#create"
+      post 'login' => 'user_sessions#create'
       post 'logout' => 'user_sessions#destroy', :as => :logout
       resource :registration, only: %i[create]
       resources :game_lists, only: %i[show]

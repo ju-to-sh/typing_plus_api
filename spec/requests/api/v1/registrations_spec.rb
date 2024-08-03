@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe 'RegistrationAPI', type: :request do
   context '新規ユーザー登録に成功する場合' do
     it '新規ユーザー作成に成功' do
-      user_params = { nickname: 'user', email: 'user@example.com', password: 'password', password_confirmation: 'password' }
+      user_params = { nickname: 'user', email: 'user@example.com', password: 'password',
+                      password_confirmation: 'password' }
 
       expect { post api_v1_registration_path, params: { user: user_params } }.to change(User, :count).by(+1)
       expect(response.status).to eq(200)
@@ -33,7 +34,8 @@ RSpec.describe 'RegistrationAPI', type: :request do
     end
 
     it '既に登録済みのemailを入力して新規ユーザー作成に失敗' do
-      user_params = { nickname: 'user', email: 'user@example.com', password: 'password', password_confirmation: 'password' }
+      user_params = { nickname: 'user', email: 'user@example.com', password: 'password',
+                      password_confirmation: 'password' }
       post api_v1_registration_path, params: { user: user_params }
       expect(response.status).to eq(200)
       post api_v1_registration_path, params: { user: user_params }
@@ -48,7 +50,8 @@ RSpec.describe 'RegistrationAPI', type: :request do
       post api_v1_registration_path, params: { user: user_params }
 
       json = JSON.parse(response.body)
-      expect(json['errors']).to include 'Password is too short (minimum is 3 characters)', "Password confirmation doesn't match Password"
+      expect(json['errors']).to include 'Password is too short (minimum is 3 characters)',
+                                        "Password confirmation doesn't match Password"
       expect(response.status).to eq(400)
     end
   end

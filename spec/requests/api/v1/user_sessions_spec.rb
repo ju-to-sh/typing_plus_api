@@ -4,7 +4,9 @@ require 'support/login_macros'
 RSpec.describe 'UserSessions API', type: :request do
   include LoginMacros
 
-  let!(:user) { User.create!(nickname: 'user', email: 'user@example.com', password: 'password', password_confirmation: 'password') }
+  let!(:user) do
+    User.create!(nickname: 'user', email: 'user@example.com', password: 'password', password_confirmation: 'password')
+  end
 
   describe 'POST /login' do
     context 'ユーザーログインに成功する場合' do
@@ -28,7 +30,7 @@ RSpec.describe 'UserSessions API', type: :request do
         json = JSON.parse(response.body)
 
         expect(response.status).to eq(404)
-        expect(json['errors']).to include "ActiveRecord::RecordNotFound"
+        expect(json['errors']).to include 'ActiveRecord::RecordNotFound'
       end
     end
   end

@@ -1,6 +1,6 @@
 module Api
   module V1
-    class GameListsController  < BaseController
+    class GameListsController < BaseController
       skip_before_action :authenticate
 
       def index

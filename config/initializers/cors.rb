@@ -7,11 +7,11 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "https://typing-plus-front.vercel.app", 'http://localhost:3000'
+    origins 'https://typing-plus-front.vercel.app', 'http://localhost:3000'
 
-    resource "*",
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head],
-      expose: ['AccessToken']
+    resource '*',
+             headers: :any,
+             methods: %i[get post put patch delete options head],
+             expose: ['AccessToken']
   end
 end

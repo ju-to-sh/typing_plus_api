@@ -8,8 +8,11 @@ RSpec.describe 'QuizResultAPI', type: :request do
 
   let!(:game_list) { create(:game_list, game_type: 1) }
   let!(:user) { create(:user) }
-  let!(:quizzes) { create_list(:quiz, 5, game_list: game_list) }
-  let(:valid_attributes) { { quiz_result: [{quiz_id: quizzes[0].id, select_answer: 0}, {quiz_id: quizzes[1].id, select_answer: 0}, {quiz_id: quizzes[2].id, select_answer: 0}, {quiz_id: quizzes[3].id, select_answer: 0}, {quiz_id: quizzes[4].id, select_answer: 0}] } }
+  let!(:quizzes) { create_list(:quiz, 5, game_list:) }
+  let(:valid_attributes) do
+    { quiz_result: [{ quiz_id: quizzes[0].id, select_answer: 0 }, { quiz_id: quizzes[1].id, select_answer: 0 },
+                    { quiz_id: quizzes[2].id, select_answer: 0 }, { quiz_id: quizzes[3].id, select_answer: 0 }, { quiz_id: quizzes[4].id, select_answer: 0 }] }
+  end
   let(:access_token) { ApiKey.find_by(user_id: user.id).access_token }
   let(:headers) { { 'Authorization' => "Bearer #{access_token}" } }
 
@@ -17,17 +20,17 @@ RSpec.describe 'QuizResultAPI', type: :request do
     context 'ユーザーがログインしている場合' do
       before do
         login(user)
-        post api_v1_quiz_results_path, params: valid_attributes, headers: headers
+        post api_v1_quiz_results_path, params: valid_attributes, headers:
       end
 
       it '特定のユーザーのクイズ結果を取得する' do
-        get api_v1_quiz_result_path(id: game_list.id), headers: headers
+        get(api_v1_quiz_result_path(id: game_list.id), headers:)
 
         expect(response.status).to eq(200)
-        json.each_with_index  do |data, index|
-          expect(data["user_id"]).to eq(user.id)
-          expect(data["quiz_id"]).to eq(quizzes[index].id)
-          expect(data["select_answer"]).to eq(0)
+        json.each_with_index do |data, index|
+          expect(data['user_id']).to eq(user.id)
+          expect(data['quiz_id']).to eq(quizzes[index].id)
+          expect(data['select_answer']).to eq(0)
         end
       end
     end
@@ -40,7 +43,7 @@ RSpec.describe 'QuizResultAPI', type: :request do
       end
 
       it 'クイズ問題の結果を登録する' do
-        post api_v1_quiz_results_path, params: valid_attributes, headers: headers
+        post(api_v1_quiz_results_path, params: valid_attributes, headers:)
 
         expect(response).to have_http_status(:created)
         expect(json['message']).to eq('Quiz results saved successfully')
