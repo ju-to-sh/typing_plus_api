@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       resources :typing_game_results, only: %i[create]
       resources :likes, only: %i[create destroy]
       get 'ranking' => 'ranking_lists#index'
+      resources :password_resets
+      mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
     end
   end
 end
