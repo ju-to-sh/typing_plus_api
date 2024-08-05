@@ -56,9 +56,9 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'letter_opener_web', '~> 3.0'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
-  gem 'letter_opener_web', '~> 3.0'
 end
 
 group :development do
