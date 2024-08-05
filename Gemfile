@@ -54,6 +54,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'debug', platforms: %i[mri windows]
+  gem 'letter_opener_web', '~> 3.0'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'rubocop', require: false
