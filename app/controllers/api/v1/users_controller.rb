@@ -17,6 +17,17 @@ module Api
         end
       end
 
+      def study_records
+        user = current_user
+        typing_results = user.typing_game_results.order(created_at: :desc)
+        quiz_results = user.quiz_results
+        data = {
+          typing: TypingGameResultSerializer.new(typing_results).serializable_hash[:data],
+          quiz: QuizResultSerializer.new(quiz_results).serializable_hash[:data]
+        }
+        render json: data
+      end
+
       private
 
       def user_params
