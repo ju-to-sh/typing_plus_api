@@ -1,7 +1,7 @@
 module Api
   module V1
     class GameListsController < BaseController
-      skip_before_action :authenticate
+      skip_before_action :authenticate, only: %i[index show quiz_lists typing_lists]
 
       def index
         q = GameList.ransack(search_params)
