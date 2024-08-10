@@ -29,10 +29,15 @@ module Api
       end
 
       def likes
-        if current_user
+        if access_token_present?
+          authenticate
           like_lists = current_user.like_game_lists.order(created_at: :desc)
-          json_string = GameListSerializer.new(like_lists).serializable_hash.to_json
-          render json: json_string
+          if like_lists
+            json_string = GameListSerializer.new(like_lists).serializable_hash.to_json
+            render json: json_string
+          else
+            render json: []
+          end
         else
           render json: []
         end
